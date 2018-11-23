@@ -10,5 +10,3 @@ module.exports = (robot) ->
       msg.send code.toString()
 
 #    msg.send "@"+ array[Math.floor(Math.random() * array.length)]
-
-
