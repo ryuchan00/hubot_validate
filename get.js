@@ -2,12 +2,28 @@
 (function() {
   var http;
 
-  http = require('http');
+  http = require('follow-redirects').https;
 
   http.get({
-    host: 'www.google.com'
+    host: 'script.google.com',
+    path: '/macros/s/AKfycbyO4NJf21sY9DCfV0ySp28Vrk7YvSoc8b2Jac9TV_ptkTnTWg0/exec'
   }, function(res) {
-    return console.log(res.statusCode);
+    var body;
+    if (res.statusCode === 200) {
+      body = '';
+      res.setEncoding('utf8');
+      res.on('data', function(chunk) {
+        return body += chunk;
+      });
+      return res.on('end', function() {
+        var obj;
+        console.log(body);
+        obj = JSON.parse(body);
+        return console.log(obj[0].user);
+      });
+    } else {
+      return console.log("error: " + res.statusCode);
+    }
   });
 
 }).call(this);
