@@ -2,10 +2,12 @@
 http = require 'follow-redirects'
 http = http.https
 
+url = process.env.URL
+
 http.get
   host: 'script.google.com'
 #  port: 3000
-  path: '/macros/s/AKfycbyO4NJf21sY9DCfV0ySp28Vrk7YvSoc8b2Jac9TV_ptkTnTWg0/exec'
+  path: url
 , (res) ->
   if res.statusCode is 200
     body = ''
@@ -15,6 +17,6 @@ http.get
     res.on 'end', ->
       console.log body
       obj = JSON.parse(body)
-      console.log obj.user
+      console.log obj.target
   else
     console.log "error: #{res.statusCode}"
