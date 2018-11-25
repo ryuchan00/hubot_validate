@@ -15,6 +15,6 @@ http.get
     res.on 'end', ->
       console.log body
       obj = JSON.parse(body)
-      console.log obj[0].user
+      console.log obj.user
   else
     console.log "error: #{res.statusCode}"
