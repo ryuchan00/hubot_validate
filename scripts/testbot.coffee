@@ -18,6 +18,6 @@ module.exports = (robot) ->
           console.log body
           obj = JSON.parse(body)
           console.log obj.target
-          msg.send obj.target
+          msg.send '@' + obj.target.toString()
       else
         console.log "error: #{res.statusCode}"
