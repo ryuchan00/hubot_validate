@@ -3,5 +3,11 @@
     {
       "user": "taro"
     }
-  ]
+  ],
+  "lunch_target": {
+    "users": [
+      "taro",
+      "shinnosuke"
+    ]
+  }
 }
