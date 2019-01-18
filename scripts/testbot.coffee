@@ -1,6 +1,6 @@
 http = require 'follow-redirects'
-http = http.http
-#http = http.https
+#http = http.http
+http = http.https
 
 url = process.env.URL
 
@@ -22,13 +22,13 @@ module.exports = (robot) ->
           msg.send '@' + obj.target.toString()
       else
         console.log "error: #{res.statusCode}"
-  robot.hear /チームランチ$/i, (msg) ->
+  robot.hear /チームランチ行く/i, (msg) ->
     http.get
-      host: 'localhost'
-#      host: 'script.google.com'
-      port: 3000
-      path: '/lunch_target'
-#      path: url
+#      host: 'localhost'
+      host: 'script.google.com'
+#      port: 3000
+#      path: '/lunch_target'
+      path: url + '?action=team_lunch'
     , (res) ->
       if res.statusCode is 200
         body = ''
@@ -38,11 +38,12 @@ module.exports = (robot) ->
         res.on 'end', ->
           console.log body
           obj = JSON.parse(body)
-          console.log obj.users
+#          console.log obj.users
           member = ''
           for value, index in obj.users
-            console.log index, value
+#            console.log index, value
             member += '@' + value.toString() + ' '
+#          console.log(member)
           msg.send member + 'チームランチの時間だよ!!'
       else
         console.log "error: #{res.statusCode}"
