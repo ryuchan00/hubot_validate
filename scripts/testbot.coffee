@@ -3,6 +3,7 @@ http = require 'follow-redirects'
 http = http.https
 
 url = process.env.URL
+spread_sheet_url = process.env.SpreadSheetUrl
 
 module.exports = (robot) ->
   robot.respond /ルーレット/i, (msg) ->
@@ -44,6 +45,6 @@ module.exports = (robot) ->
 #            console.log index, value
             member += '@' + value.toString() + ' '
 #          console.log(member)
-          msg.send member + 'チームランチの時間だよ!!'
+          msg.send member + 'チームランチの時間だよ!! <' + spread_sheet_url + '|設定はここから>'
       else
         console.log "error: #{res.statusCode}"
