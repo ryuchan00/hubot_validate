@@ -5,8 +5,8 @@
   "author": "ryuchun00 <leokun0210@gmail.com>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
-    "follow-redirects": "^1.5.10",
-    "hubot": "^3.1.1",
+    "follow-redirects": "^1.9.0",
+    "hubot": "^3.3.2",
     "hubot-diagnostics": "^1.0.0",
     "hubot-google-images": "^0.2.7",
     "hubot-google-translate": "^0.2.1",
@@ -18,9 +18,9 @@
     "hubot-rules": "^1.0.0",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
-    "hubot-slack": "^4.5.5"
+    "hubot-slack": "^4.7.1"
   },
   "engines": {
-    "node": "10.10.0"
+    "node": "12.10.0"
   }
 }
