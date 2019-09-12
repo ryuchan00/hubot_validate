@@ -20,7 +20,13 @@ module.exports = (robot) ->
           console.log body
           obj = JSON.parse(body)
           console.log obj.target
-          msg.send '@' + obj.target.toString()
+          # スレッドかの判定
+          res_msg = '@' + obj.target.toString()
+          if msg.message.thread_ts?
+            msg.send res_msg
+          else
+            msg.message.thread_ts = msg.message.rawMessage.ts
+            msg.send res_msg
       else
         console.log "error: #{res.statusCode}"
   robot.hear /チームランチ行く/i, (msg) ->
@@ -39,12 +45,12 @@ module.exports = (robot) ->
         res.on 'end', ->
           console.log body
           obj = JSON.parse(body)
-#          console.log obj.users
+          #          console.log obj.users
           member = ''
           for value, index in obj.users
 #            console.log index, value
             member += '@' + value.toString() + ' '
-#          console.log(member)
+          #          console.log(member)
           msg.send member + 'チームランチの時間だよ!! <' + spread_sheet_url + '|設定はここから>'
       else
         console.log "error: #{res.statusCode}"
