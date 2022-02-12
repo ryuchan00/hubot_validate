@@ -5,7 +5,7 @@
   "author": "ryuchun00 <leokun0210@gmail.com>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
-    "follow-redirects": "^1.9.0",
+    "follow-redirects": "^1.14.8",
     "hubot": "^3.3.2",
     "hubot-diagnostics": "^1.0.0",
     "hubot-google-images": "^0.2.7",
